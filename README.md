@@ -40,16 +40,26 @@ npm start
   description: String,
   dateCreation: Date,
   echeance: Date,
-  statut: String,        // à faire, en cours, terminée, annulée
-  priorite: String,      // basse, moyenne, haute, critique
-  categorie: String,     // perso, travail, projet
+  statut: String,
+  priorite: String,
+  auteur: {
+    nom: String,
+    prenom: String,
+    email: String
+  },
+  categorie: String,
+  etiquettes: [String],
   sousTaches: [{
     titre: String,
     statut: String,
     echeance: Date
   }],
   commentaires: [{
-    auteur: { nom, prenom, email },
+    auteur: {
+      nom: String,
+      prenom: String,
+      email: String
+    },
     date: Date,
     contenu: String
   }],
