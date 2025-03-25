@@ -1,81 +1,38 @@
-# Gestionnaire de Tâches
+# 📝 Gestionnaire de Tâches
 
-Une application web de gestion de tâches développée avec Node.js, Express, MongoDB et JavaScript vanilla.
+Une application web moderne de gestion de tâches avec une interface intuitive et des fonctionnalités avancées.
 
-## 🚀 Fonctionnalités
+## ✨ Caractéristiques
 
-- ✅ Gestion complète des tâches (CRUD)
-- 📋 Sous-tâches et commentaires
-- 🏷️ Système de priorités et de statuts
-- 🔍 Filtrage avancé des tâches
-- 📱 Interface responsive
+- 🎯 Gestion complète des tâches (CRUD)
+- 📋 Système de sous-tâches et commentaires
+- 🏷️ Catégorisation par priorité et statut
+- 🔍 Filtrage et recherche avancés
+- 📱 Design responsive et moderne
 
-### Gestion des Tâches
-
-- Création, modification et suppression de tâches
-- Statuts : à faire, en cours, terminée, annulée
-- Priorités : basse, moyenne, haute, critique
-- Dates d'échéance
-- Catégorisation des tâches
-
-### Fonctionnalités Avancées
-
-- Gestion des sous-tâches
-- Système de commentaires
-- Historique des modifications
-- Filtrage multi-critères
-- Recherche textuelle
-
-## 🛠️ Technologies Utilisées
-
-- **Backend**
-
-  - Node.js
-  - Express.js
-  - MongoDB
-  - Mongoose
-
-- **Frontend**
-  - HTML5
-  - CSS3
-  - JavaScript (Vanilla)
-
-## 📋 Prérequis
-
-- Node.js (v14 ou supérieur)
-- MongoDB (v4.4 ou supérieur)
-
-## 🔧 Installation
-
-1. Clonez le repository :
+## 🚀 Démarrage Rapide
 
 ```bash
+# Installation
 git clone [url-du-repo]
-```
-
-2. Installez les dépendances :
-
-```bash
 cd [nom-du-projet]
 npm install
-```
 
-3. Créez un fichier `.env` à la racine du projet :
+# Configuration
+echo "PORT=3000
+MONGODB_URI=mongodb://localhost:27017/TP2" > .env
 
-```env
-PORT=3000
-MONGODB_URI=mongodb://localhost:27017/TP2
-```
-
-4. Démarrez le serveur :
-
-```bash
+# Lancement
 npm start
 ```
 
-## 📊 Structure de la Base de Données
+## 🛠️ Stack Technique
 
-### Collection `tasks`
+- **Backend**: Node.js + Express + MongoDB
+- **Frontend**: HTML5 + CSS3 + JavaScript vanilla
+- **Base de données**: MongoDB avec Mongoose
+
+## 📊 Structure des Données
 
 ```javascript
 {
@@ -83,26 +40,16 @@ npm start
   description: String,
   dateCreation: Date,
   echeance: Date,
-  statut: String,
-  priorite: String,
-  auteur: {
-    nom: String,
-    prenom: String,
-    email: String
-  },
-  categorie: String,
-  etiquettes: [String],
+  statut: String,        // à faire, en cours, terminée, annulée
+  priorite: String,      // basse, moyenne, haute, critique
+  categorie: String,     // perso, travail, projet
   sousTaches: [{
     titre: String,
     statut: String,
     echeance: Date
   }],
   commentaires: [{
-    auteur: {
-      nom: String,
-      prenom: String,
-      email: String
-    },
+    auteur: { nom, prenom, email },
     date: Date,
     contenu: String
   }],
@@ -115,35 +62,54 @@ npm start
 }
 ```
 
-## 🔗 API Endpoints
+## 🔌 API REST
 
 ### Tâches
+```
+GET    /tasks              # Liste des tâches
+GET    /tasks/:id         # Détails d'une tâche
+POST   /tasks             # Création
+PUT    /tasks/:id         # Modification
+DELETE /tasks/:id         # Suppression
+```
 
-- `GET /tasks` - Récupérer toutes les tâches
-- `GET /tasks/:id` - Récupérer une tâche spécifique
-- `POST /tasks` - Créer une nouvelle tâche
-- `PUT /tasks/:id` - Modifier une tâche
-- `DELETE /tasks/:id` - Supprimer une tâche
+### Sous-tâches & Commentaires
+```
+POST   /tasks/:id/subtasks           # Ajouter une sous-tâche
+PUT    /tasks/:id/subtasks/:id       # Modifier une sous-tâche
+DELETE /tasks/:id/subtasks/:id       # Supprimer une sous-tâche
+POST   /tasks/:id/comments           # Ajouter un commentaire
+DELETE /tasks/:id/comments/:id       # Supprimer un commentaire
+```
 
-### Sous-tâches
+## 🔍 Filtres & Recherche
 
-- `POST /tasks/:id/subtasks` - Ajouter une sous-tâche
-- `PUT /tasks/:id/subtasks/:subtaskId` - Modifier une sous-tâche
-- `DELETE /tasks/:id/subtasks/:subtaskId` - Supprimer une sous-tâche
+| Paramètre | Description | Exemple |
+|-----------|-------------|---------|
+| `statut` | Filtre par statut | `/tasks?statut=à faire` |
+| `priorite` | Filtre par priorité | `/tasks?priorite=haute` |
+| `categorie` | Filtre par catégorie | `/tasks?categorie=perso` |
+| `q` | Recherche textuelle | `/tasks?q=rapport` |
+| `avant/apres` | Filtre par date | `/tasks?avant=2024-12-31` |
 
-### Commentaires
+## 📱 Interface Utilisateur
 
-- `POST /tasks/:id/comments` - Ajouter un commentaire
-- `DELETE /tasks/:id/comments/:commentId` - Supprimer un commentaire
+- Design moderne et épuré
+- Navigation intuitive
+- Filtres rapides et efficaces
+- Visualisation claire des priorités
+- Gestion simplifiée des sous-tâches
+- Système de commentaires intégré
 
-## 🔍 Paramètres de Filtrage
+## 🔒 Sécurité
 
-| Paramètre | Example                   | Description           |
-| --------- | ------------------------- | --------------------- |
-| statut    | `/tasks?statut=à faire`   | Filtrer par statut    |
-| priorite  | `/tasks?priorite=haute`   | Filtrer par priorité  |
-| categorie | `/tasks?categorie=perso`  | Filtrer par catégorie |
-| etiquette | `/tasks?etiquette=urgent` | Filtrer par étiquette |
-| avant     | `/tasks?avant=2024-12-31` | Tâches avant une date |
-| apres     | `/tasks?apres=2024-01-01` | Tâches après une date |
-| q         | `/tasks?q=rapport`        | Recherche textuelle   |
+- Validation des données
+- Protection contre les injections
+- Gestion des erreurs
+- Historique des modifications
+
+## 📦 Prérequis
+
+- Node.js ≥ v14
+- MongoDB ≥ v4.4
+- Navigateur moderne
