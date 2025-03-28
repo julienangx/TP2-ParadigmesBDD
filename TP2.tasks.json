@@ -1,0 +1,71 @@
+[{
+  "_id": {
+    "$oid": "67e27c3cd51d8de99d32a9c1"
+  },
+  "titre": "zs",
+  "description": "szazsa",
+  "echeance": {
+    "$date": "2025-03-19T00:00:00.000Z"
+  },
+  "statut": "à faire",
+  "priorite": "basse",
+  "etiquettes": [],
+  "dateCreation": {
+    "$date": "2025-03-25T09:49:48.715Z"
+  },
+  "sousTaches": [],
+  "commentaires": [],
+  "historiqueModifications": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67e27d0e4392361bc27d17e5"
+  },
+  "titre": "zz",
+  "description": "zzz",
+  "echeance": {
+    "$date": "2025-03-20T00:00:00.000Z"
+  },
+  "statut": "à faire",
+  "priorite": "basse",
+  "etiquettes": [],
+  "dateCreation": {
+    "$date": "2025-03-25T09:53:18.435Z"
+  },
+  "sousTaches": [
+    {
+      "titre": "jhgvjhvhjvjhvhvjhv",
+      "statut": "terminée",
+      "echeance": {
+        "$date": "2025-03-25T00:00:00.000Z"
+      },
+      "_id": {
+        "$oid": "67e27e914392361bc27d17f0"
+      }
+    }
+  ],
+  "commentaires": [],
+  "historiqueModifications": [],
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "67e27dab4392361bc27d17e9"
+  },
+  "titre": "zz",
+  "description": "z",
+  "echeance": {
+    "$date": "2025-03-14T00:00:00.000Z"
+  },
+  "statut": "annulée",
+  "priorite": "basse",
+  "etiquettes": [],
+  "dateCreation": {
+    "$date": "2025-03-25T09:55:55.383Z"
+  },
+  "sousTaches": [],
+  "commentaires": [],
+  "historiqueModifications": [],
+  "__v": 0
+}]
